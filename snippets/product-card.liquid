@@ -1,0 +1,23 @@
+
+         
+<div class="group relative">
+    {% if product.featured_image %}
+        <div class="overflow-hidden aspect-square">
+            <img src="{{ product.featured_image | image_url }}" alt="" class="object-contain object-top transition transform duration-200 aspect-square rounded-md bg-white w-full group-hover:scale-105 ease-in-out lg:aspect-auto lg:h-80" />
+        </div>
+   
+    {% endif %}
+    <div class="mt-4 flex justify-between">
+    <div>
+        <h3 class="text-sm text-gray-700">
+        <a href="{{ product.url }}" class="font-medium text-gray-900 hover:text-blue">
+            <span aria-hidden="true" class="absolute inset-0"></span>
+            {{ product.title }}
+        </a>
+        </h3>
+        <p class="mt-1 text-sm text-gray-500">{{ product.price | money }}</p>
+    </div>
+    <p class="text-sm font-medium text-gray-900">{{ product.price | money }}</p>
+    </div>
+</div>
+     

@@ -1,0 +1,9 @@
+{% if cart.item_count > 0 %}
+{% else %}
+    <div class="max-w-6xl my-4 flex mx-auto items-center justify-center">
+        <div class="items-center flex flex-col justify-center">
+            <h1 class="text-3xl my-4">Ihr Warenkorb ist leer</h1>
+            <a class="bg-blue text-white py-3 px-2 rounded" href="{{ routes.all_products_collection_url }}">Weiter shoppen</a>
+        </div>
+    </div>
+{% endif %}
