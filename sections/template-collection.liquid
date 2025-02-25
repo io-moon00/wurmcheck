@@ -1,7 +1,23 @@
+<div class="bg-white">
+    <div aria-hidden="true" class="relative flex items-center">
+      <img src="{{ collection.featured_image | image_url }}" alt="" class="mx-auto h-96 w-full max-w-6xl object-contain ">
+      <div class="h-36 w-full absolute bottom-0 bg-linear-to-t from-white"></div>
+    </div>
+  
+    <div class="relative mx-auto -mt-12 max-w-7xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center lg:max-w-4xl">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ collection.title }}</h2>
+        <p class="mt-4 text-gray-500">{{ collection.description }}</p>
+      </div>
+  
+      
+    </div>
+  </div>
+
 {% paginate collection.products by section.settings.number_of_products_per_page %}
     <div class="bg-white">
         <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-          <h2 class="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>
+          <h1 class="text-2xl font-bold tracking-tight text-gray-900">{{ collection.title }}</h1>
       
           <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
   {% for product in collection.products %}
@@ -14,6 +30,11 @@
 </div>
 </div>
 </div>
+<div class="mx-auto max-w-screen-sm grid gird-cols-2 text-center">
+    <div>
+        {{ section.settings.paragraph }}
+    </div>
+</div>   
 
 {% endpaginate %}
 
@@ -27,7 +48,12 @@
       "id": "number_of_products_per_page",
       "label": "Number of products per page",
       "default": 6
-    }
+    },
+    {
+        "type": "richtext",
+        "id": "paragraph",
+        "label": "Paragraph"
+      }
   ],
 
 }
