@@ -7,7 +7,7 @@
     </div>
 
     <div class="max-w-6xl flex flex-col my-10 mx-auto">
-        <form action="{{ rout.cart_url }}" method="POST" novalidate></form>
+        <form action="{{ routes.cart_url }}" method="POST" ></form>
             <table class="table-auto divide-y divide-gray-200 my-4 w-full">
                 <thead>
                     <th class="px-6 py-3 text-left text-sm font-medium text-gray-500"></th>
@@ -81,16 +81,3 @@
 {% endif %}
 
 
-{% schema %}
-{
-    "name": "Template Cart"
-    "blocks": [
-        {"type": "subtotal",
-        "name": "subtotal",
-        "limit": 1
-    },
-    {
-    }
-]
-}
-{% endschema %}
