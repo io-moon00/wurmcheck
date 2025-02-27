@@ -28,3 +28,9 @@
 .small-caps {
     font-variant: small-caps;
 }
+
+.hs-tab-active {
+  color: #48b7cd; /* Tailwind's blue-600 color */
+  font-weight: 600; /* Make the text bold */
+  border-color: #48b7cd; /* Add border color for active state */
+}

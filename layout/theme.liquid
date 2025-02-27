@@ -18,6 +18,8 @@
     <!-- Header hook for plugins -->
     {{ 'application.css' | asset_url | stylesheet_tag }}
     {{ 'custom_style.css' | asset_url | stylesheet_tag }}
+    {{ 'flowbite.min.js' | asset_url | script_tag }}
+    {{ 'preline.js' | asset_url | script_tag }}
     {{ 'application.js' | asset_url | script_tag }}
     
   </head>
