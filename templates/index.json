@@ -8,7 +8,10 @@
         },
         "hero": {
             "type": "hero",
+        },
+        "incentives": {
+            "type": "incentives"
         }
     },
-    "order":["hero", "featured-collection"]
+    "order":["hero", "featured-collection", "incentives"]
 }

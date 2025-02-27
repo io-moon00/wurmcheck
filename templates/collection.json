@@ -3,8 +3,9 @@
         "template": {
             "type": "template-collection"
         },
-        
-
+        "content-cols": {
+            "type": "content-cols"
+        }
     },
-    "order": ["template"]
+    "order": ["template", "content-cols"]
 }

@@ -1,0 +1,63 @@
+{% assign new_collections = '' %}
+{% assign other_collections = '' %}
+
+{% for collection in collections %}
+    {% if collection.all_products_count > 0 and collection.handle != 'frontpage' %}
+        {% if collection.metafields.custom.new %}
+            {% assign new_collections = new_collections | append: collection.handle | append: ',' %}
+        {% else %}
+            {% assign other_collections = other_collections | append: collection.handle | append: ',' %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+{% assign sorted_collections = new_collections | append: other_collections | split: ',' %}
+
+<div class="bg-white flex justify-center px-4 sm:px-6 lg:px-8 mt-20">
+    <div class="grid grid-cols-3 gap-8 max-w-6xl w-full">
+        {% for handle in sorted_collections %}
+            {% assign collection = collections[handle] %}
+            {% if collection %}
+                <div class="text-center flex flex-col items-center pt-10 h-full justify-between">
+                    {% assign title_parts = collection.title | split: 'Check' %}
+                    <div class="flex flex-col items-center">
+                        <h2 class="mb- text-4xl font-bold leading-none tracking-tight max-w-fit text-gray-900 relative">
+                            {% if collection.metafields.custom.new %}
+                            <svg class="text-blue absolute -top-8 -right-10" width="40px" height="40px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="currentColor" d="M42.3,24l3.4-5.1a2,2,0,0,0,.2-1.7A1.8,1.8,0,0,0,44.7,16l-5.9-2.4-.5-5.9a2.1,2.1,0,0,0-.7-1.5,2,2,0,0,0-1.7-.3L29.6,7.2,25.5,2.6a2.2,2.2,0,0,0-3,0L18.4,7.2,12.1,5.9a2,2,0,0,0-1.7.3,2.1,2.1,0,0,0-.7,1.5l-.5,5.9L3.3,16a1.8,1.8,0,0,0-1.2,1.2,2,2,0,0,0,.2,1.7L5.7,24,2.3,29.1a2,2,0,0,0,1,2.9l5.9,2.4.5,5.9a2.1,2.1,0,0,0,.7,1.5,2,2,0,0,0,1.7.3l6.3-1.3,4.1,4.5a2,2,0,0,0,3,0l4.1-4.5,6.3,1.3a2,2,0,0,0,1.7-.3,2.1,2.1,0,0,0,.7-1.5l.5-5.9L44.7,32a2,2,0,0,0,1-2.9ZM18,31.1l-4.2-3.2L12.7,27h-.1l.6,1.4,1.7,4-2.1.8L9.3,24.6l2.1-.8L15.7,27l1.1.9h0a11.8,11.8,0,0,0-.6-1.3l-1.6-4.1,2.1-.9,3.5,8.6Zm3.3-1.3-3.5-8.7,6.6-2.6.7,1.8L20.7,22l.6,1.6L25.1,22l.7,1.7L22,25.2l.7,1.9,4.5-1.8.7,1.8Zm13.9-5.7-2.6-3.7-.9-1.5h-.1a14.7,14.7,0,0,1,.4,1.7l.8,4.5-2.1.9-5.9-7.7,2.2-.9,2.3,3.3,1.3,2h0a22.4,22.4,0,0,1-.4-2.3l-.7-4,2-.8L33.8,19,35,20.9h0s-.2-1.4-.4-2.4L34,14.6l2.1-.9,1.2,9.6Z"/>
+                            </svg>
+                            {% endif %}
+                            {{ title_parts[0] }}<span class="text-blue uppercase">Check</span>
+                        </h2>
+                        <p class="mx-auto mt-6 max-w-xl text-lg/8 text-pretty text-gray-600">{{ collection.metafields.custom.short_description | metafield_tag }}</p>
+                    </div>
+                    <a href="{{ collection.url }}" class="mt-4 text-sm/6 font-semibold hover:bg-blue hover:text-white transition-colors border border-blue rounded-md py-1 px-2 text-blue">{{ section.settings.more-btn-text }}<span aria-hidden="true"> →</span></a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Collection List",
+    "settings": [
+        {
+            "type": "text",
+            "id": "more-btn-text",
+            "label": "More Button Text",
+            "default": "Mehr erfahren"
+        },
+        {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Collection List"
+        }
+    ]
+}
+{% endschema %}

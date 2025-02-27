@@ -1,7 +1,6 @@
-<div class="bg-white">
-    <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-      <h2 class="text-2xl font-bold tracking-tight text-gray-900">{{ section.settings.title }}</h2>
-  
+<div class="bg-white w-full px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-6xl px-4 py-16 sm:py-24">
+      <h2 class="text-2xl font-bold w-full border-b border-gray-200 pb-2 tracking-tight text-gray-800">{{ section.settings.title }}</h2>
         <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {% for product in section.settings.featured_collection.products limit: section.settings.number_of_products_to_show %}
                 {% render 'product-card', product: product %}

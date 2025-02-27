@@ -11,7 +11,7 @@
         @apply list-outside list-disc mx-6;
     },
     p {
-        @apply text-lg;
+        @apply text-lg text-gray-700;
     }
     a {
         @apply text-blue;

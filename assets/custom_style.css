@@ -1,0 +1,30 @@
+/* Scroll bar */
+/* width */
+::-webkit-scrollbar{
+    width: 6px;
+    height: 6px;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track{
+    background: lightgray;
+}
+  
+  /* Handle */
+::-webkit-scrollbar-thumb{
+    background: gray;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:horizontal{
+    background: gray;
+}
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover{
+    background: #48b7cd;
+}
+/* Existing styles */
+.small-caps {
+    font-variant: small-caps;
+}
