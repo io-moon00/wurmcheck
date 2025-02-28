@@ -1,4 +1,9 @@
-<div class="h-full flex items-center justify-center py-12 px-6 md:px-4 lg:px-8" x-data="{loginForm: true, pwRecoverForm: false}">
+<head>
+    <!-- Other head elements -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</head>
+
+<div class="h-full flex items-center justify-center py-12 px-6 md:px-4 lg:px-8" x-data="{ loginForm: true, pwRecoverForm: false }">
     <div x-show="loginForm" class="max-w-md w-full space-y-8">
         <div>
             <h1 class="text-center text-3xl font-bold mt-6">Login</h1>
@@ -18,7 +23,7 @@
                     id="email_address"
                     autocomplete="email"
                     class="relative block w-full px-3 py-2 border"
-                    placeholder="Email address"
+                    placeholder="Email addresse"
                 >
             </div>
 
@@ -30,28 +35,30 @@
                         id="password"
                         autocomplete="current-password"
                         class="relative block w-full px-3 py-2 border"
-                        placeholder="Password"
+                        placeholder="Passwort"
                     >
                 </div>
             {% endif %}
             <div class="my-2 text-sm">
-                <a x-on:click="loginForm = false; pwRecoverForm = true" href="#" class="underline text-gray-500 hover:text-gray-900">
+                <a x-on:click=" loginForm = false; pwRecoverForm = true" href="#" class="underline text-gray-500 hover:text-gray-900">
                   Haben Sie Ihr Passwort vergessen?   
                 </a>
             </div>
-            <div>
-                <button type="submit" class="relative w-full py-2 px-4 text-sm font-medium text-white bg-gray-600 hover:bg-gray-900">
+            <div class="flex flex-col items-center mt-6">
+                <button type="submit" class="py-2 px-4 text-sm font-medium text-white bg-black">
                     Anmelden
                 </button>
+                <a href="#" class="mt-2 underline">Konto erstellen</a>
             </div>
         {% endform %}
     </div>
 
     <div x-show="pwRecoverForm" class="max-w-md w-full space-y-8">
         <div>
-            <h1 class="text-center text-3xl font-bold mt-6">Setzten Sie Ihr Passwort zurück</h1>
+            <h1 class="text-center text-4xl font-bold mt-6">Setzten Sie Ihr Passwort zurück</h1>
         </div>
-        <div class="mt-8"></div>
+        <p class="text-center">Wir werden Ihnen eine E-Mail zum Zurücksetzen Ihres Passworts schicken</p>
+        
         {% form 'recover_customer_password' %}
             {% if form.errors %}
                 <div class="relative border border_red_400 bg-red-100 700 px4 py-3" role="alert">
@@ -70,15 +77,17 @@
                     placeholder="Email address"
                 >
             </div>
-            <div>
-                <button type="submit" class="relative w-full py-2 px-4 text-sm font-medium text-white bg-gray-600 hover:bg-gray-900">
+            <div class="flex flex-col items-center mt-6">
+                <button type="submit" class="py-2 px-6 text-sm font-medium text-white bg-black">
                     Senden
                 </button>
+                <div class="mt-2 text-sm">
+                    <a x-on:click="loginForm = true; pwRecoverForm = false" href="#" class="mt-2 underline">Abbrechen</a>
+                </div>
             </div>
+            
 
-            <div class="mt-8 text-sm">
-                <a x-on:click="loginForm = true; pwRecoverForm = false" href="#" lass="underline text-gray-500 hover:text-gray-900">Abbrechen</a>
-            </div>
+            
         {% endform %}
     </div>
 </div>
